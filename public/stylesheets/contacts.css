@@ -1,0 +1,23 @@
+/* @override 
+	http://localhost:3000/stylesheets/contacts.css?1191919346
+	http://localhost:3000/stylesheets/contacts.css?1192046163
+*/
+
+#contacts-list {
+	float: left;
+	height: 500px;
+	width: 500px;
+	overflow: auto;
+}
+
+#contact {
+	float: right;
+	padding: 20px;
+	width: 360px;
+	min-width: 360px;
+}
+
+#contacts-list tr {
+	cursor: pointer;
+}
+

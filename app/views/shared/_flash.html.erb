@@ -1,0 +1,7 @@
+<script type="text/javascript" charset="utf-8">
+    <% if flash[:notice] %>
+        $('#flash').html('<%= flash[:notice] %>').show().corner("5px");
+    <% else %>
+        $('#flash').hide();
+    <% end %>
+</script>

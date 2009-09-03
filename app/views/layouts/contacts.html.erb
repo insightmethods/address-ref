@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Contacts: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'common' %>
+</head>
+<body  class="twocolumn">
+    
+    <div id="header">
+        <h1>Address Book</h1>
+        <% form_tag(search_contacts_path, :id => "search") do %>
+            <div id="flash">
+                
+            </div>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><input type="text" name="q" id="q" value="<%= params[:q] %>" default="Search..." /></td>
+                    <td><input type="image" src="/images/search.png" /><%= (link_to image_tag('close.png'), contacts_path) if params[:q] %></td>
+                </tr>
+            </table>
+        <% end %>
+        <br class="clearfloat" />
+    </div>
+
+<%= yield  %>
+
+<%= javascript_include_tag 'jquery-1.2.1.js' %>
+<%= javascript_include_tag 'jquery.corner.js' %>
+<%= javascript_include_tag 'application' %>
+</body>
+</html>

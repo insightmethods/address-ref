@@ -1,0 +1,13 @@
+<% fields_for :contact_line, cl do |fcl| %>
+<tr id="contact_line_<%= cl.id %>">
+    <th>
+        <%= select_tag "contact_line[#{cl.id}][label]", options_for_select(Contact.labels(section.downcase), [cl.id, cl.label]) %>
+    </th>
+    <td>
+        <%= fcl.text_field :value, :index => cl.id, :default => section, :size => 25 %>
+        <%= link_to 'remove', contact_line_path(cl), :onclick => "remove_contact_line(this,'#{form_authenticity_token}'); return false"  %>
+    </td>
+</tr>
+<% end %>
+
+<%= render :partial => 'shared/flash', :locals => {:flash => flash} %>

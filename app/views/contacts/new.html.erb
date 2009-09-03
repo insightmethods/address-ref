@@ -1,0 +1,31 @@
+<h1>New contact</h1>
+
+<%= error_messages_for :contact %>
+
+<% form_for(@contact) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Company name</b><br />
+    <%= f.text_field :company_name %>
+  </p>
+
+  <p>
+    <b>Is company</b><br />
+    <%= f.check_box :is_company %>
+  </p>
+
+  <p>
+    <b>Updated by</b><br />
+    <%= f.text_field :updated_by %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', contacts_path %>

@@ -1,0 +1,241 @@
+/* @override 
+	http://localhost:3000/stylesheets/common.css?1193835860
+	http://localhost:3000/stylesheets/common.css?1194283592
+	http://localhost:3000/stylesheets/common.css?1194438483
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	text-align: center;
+	/* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	background-color: #fff;
+	font: 100% "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
+/* @group Layout */
+
+.twocolumn #container {
+	width: 90%;
+	margin: 10px auto;
+	padding: 18px 18px 3px 18px;
+	min-height: 486px;
+	text-align: left;
+	background-color: #ababab;
+}
+
+.twocolumn #contact_list {
+	float: left;
+	width: 20em;
+	margin-top: 5px;
+	background-color: #ababab;
+}
+
+.twocolumn #contact_detail {
+	margin: 12px 5px 5px 21em;
+	height: 490px;
+	background-color: #ababab;
+}
+
+#contact_detail div.editarea {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background: #eee;
+}
+
+.fltrt {
+	float: right;
+	margin-left: 8px;
+}
+
+.fltlft {
+	float: left;
+	margin-right: 8px;
+}
+
+.clearfloat {
+	clear: both;
+	height: 0;
+	font-size: 12px;
+	line-height: 0px;
+}
+
+div#header h1{
+	height: 58px;
+	color: #fff;
+	border-bottom: 12px solid #f8a388;
+	font: 24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background: #717381 url(/images/top-gradient.png) repeat-x 0 0;
+	line-height: 81px;
+}
+
+#header form#search {
+	width: 93%;
+	margin: 0 auto;
+	padding: 10px 0;
+	background-color: #fff;
+}
+
+#search table tbody tr td input {
+	padding: 2px;
+}
+
+#header form#search table{
+	float: right;
+}
+
+div#flash {
+	width: 60%;
+	float: left;
+	padding: 3px;
+	font-size: 14px;
+	background-color: #fad163;
+	font-weight: bold;
+}
+
+
+/* @end */
+
+/* @group Contact List */
+
+#contact_list h2 {
+	background: #f8a388;
+	color: #fff;
+	padding: 5px 5px 5px 5px;
+	font: 110% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+#contact_list ul {
+	height: 457px;
+	background: url(/images/gradient.gif) repeat-y;
+	overflow: auto;
+	border: 1px solid #f8a388;
+}
+
+#contact_list ul li {
+	list-style-type: none;
+	padding: 5px 3px;
+	cursor: pointer;
+	font: 90% "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+#contact_list ul li.selected {
+	background-color: #cbcbcb;	
+}
+
+/* @end */
+
+/* @group Contact Detail */
+
+a.map-link, a.email-link {
+	text-decoration: none;
+	color: inherit;
+	border-bottom: 1px solid #dedede;
+}
+
+#contact_detail h2 {
+	margin: 10px;
+	padding: 5px 5px 20px 5px;
+	font: bold 16px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+}
+
+#contact_detail h2 > img {
+	margin: 0 10px 0 0;
+	height: 60px;
+	width: 60px;
+}
+
+#contact_detail table {
+	width: 100%;
+	font-size: 90%;
+	float: left;
+	margin-top: 30px;
+}
+
+#contact_detail table tr td, #contact_detail table tr th{
+	padding-bottom: 10px;
+}
+
+#contact_detail th {
+	text-align: right;
+	padding-right: 10px;
+	color: #636363;
+	vertical-align: top;
+}
+
+#contact_detail td, #contact_detail form th {
+	text-align: left;
+}
+
+#contact_detail div.editarea table tbody tr td {
+	width: 70%;
+}
+
+#contact_detail div.editarea table tbody tr th {
+	width: 30%;
+}
+
+
+/* @end */
+
+/* @group Contact Detail Form */
+
+#contact_detail form input, #contact_detail form select {
+	margin: 2px;
+	padding: 1px;
+}
+
+form input.hint {
+	color: gray;
+}
+
+#contact_detail form th {
+	text-align: right;
+}
+
+#contact_detail h2 a {
+	text-decoration: none;
+}
+
+#edit-link {
+	margin-left: 17em;
+}
+
+a img {
+	border: none;
+}
+
+#search table tbody tr td a img {
+	margin: 2px;
+	vertical-align: top;
+}
+
+.editarea h2 div.photo {
+	float: left;
+}
+
+.editarea h2 div.contact_name {
+	float: left;
+	font-weight: normal;
+	margin-left: 20px;
+}
+
+form h2 div.contact_name {
+	font-size: 12px;
+}
+
+.edit_contact table tbody tr td a {
+	font-size: 11px;	
+	color: darkolivegreen;
+	padding: 2px 1px 1px 2px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* @end */
+
+

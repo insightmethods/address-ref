@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @contact_line.label %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @contact_line.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_line_path(@contact_line) %> |
+<%= link_to 'Back', contact_lines_path %>

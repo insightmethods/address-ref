@@ -1,0 +1,81 @@
+<% form_for @contact do |f| %>
+    <h2>
+        <div class="photo">
+            <img src="/images/person.gif" alt="" align="top" />
+        </div>
+        <div class="contact_name">
+            <%= f.text_field :first_name, :size => 15, :default => "First" %><%= f.text_field :last_name, :size => 15, :default => "Last" %><br />
+            <%= f.text_field :company_name, :size => 30, :default => "Company" %><br />
+            <%= f.check_box :is_company %> Company?
+        </div>
+    </h2>
+    <table border="0" cellspacing="0" cellpadding="0">
+    <% %w{ Phone Email Website Chat }.each do |section| %>
+        <tr id="<%= section %>">
+            <th><%= section.pluralize %></th>
+            <td><%= link_to "add", contact_lines_path(:contact_line => {:contact_id => @contact, :label => Contact.labels(section.downcase).first[1]}, :section => section), :class => "add-cl-row"  %></td>
+        </tr>
+        <% @contact.send(section.pluralize.downcase).each do |cl| %>
+            <%= render :partial => 'contact_lines/edit', :locals => {:cl => cl, :section => section} %>
+        <% end %>
+    <% end %>
+        <tr>
+            <th>Address</th>
+            <td>
+                <% fields_for :contact_line, (cl = @contact.address_line(:address_street)) do |fcl| %>
+                    <%= fcl.text_field :value, :index => 'address_street',  :size => 24, :default => "Street" %>
+                <% end %>
+                <br />
+                <% fields_for :contact_line, (cl = @contact.address_line(:address_city)) do |fcl| %>
+                    <%= fcl.text_field :value, :index => 'address_city', :size => 12, :default => "City" %>
+                <% end %>
+                <% fields_for :contact_line, (cl = @contact.address_line(:address_state)) do |fcl| %>
+                    <%= fcl.text_field :value, :index => 'address_state', :size => 9, :default => "State" %>
+                <% end %>
+                <% fields_for :contact_line, (cl = @contact.address_line(:address_postal_code)) do |fcl| %>
+                    <%= fcl.text_field :value, :index => 'address_postal_code', :size => 6, :default => "Zip" %>
+                <% end %>
+                <br />
+                <% fields_for :contact_line, (cl = @contact.address_line(:address_country)) do |fcl| %>
+                    <%= fcl.text_field :value, :index => 'address_country', :size => 18, :default => "Country" %>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+          <th>Notes:</th>
+          <td>
+            <%= f.text_area :notes, :size => "33x3" %>
+          </td>
+        </tr>
+    </table>
+<% end %>
+
+
+<script type="text/javascript" charset="utf-8">
+    check_list_name('<%= @contact.id %>');
+    $('form.edit_contact input').each(function(){
+       show_default_value(this); 
+    }).focus(function(){
+       hide_default_value(this); 
+    }).blur(function(){
+       show_default_value(this); 
+    });
+    $('#edit-link').html('<%=escape_javascript link_to image_tag("save.png", :size => "52x22"), contact_path(@contact) %>');
+    $('#edit-link a').click(function(){
+        save_contact(this.href); 
+        return false;
+    });
+    $('form.edit_contact').submit(function(){
+        save_contact(this.action); 
+        return false;
+    });
+    $("a.add-cl-row").click(function() {
+        elem = this;
+        jQuery.post(elem.href,{_method: "post", authenticity_token: "<%= form_authenticity_token %>"}, function(data){
+    		$(elem).parent().parent().after(data); 
+    	});
+        return false;
+    });
+</script>
+
+<%= render :partial => 'shared/flash', :locals => {:flash => flash} %>

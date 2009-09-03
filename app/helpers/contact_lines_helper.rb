@@ -1,0 +1,2 @@
+module ContactLinesHelper
+end

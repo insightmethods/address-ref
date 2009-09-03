@@ -1,0 +1,45 @@
+<div id="container">
+    <div id="contact_list">
+        <h2>Names <span>
+          <small>Total: <%= @contacts.size  %></small>
+        </span></h2>
+
+        <ul>
+            <% for contact in @contacts %>
+              <li id="contact_<%= contact.id %>_name" path="<%= contact_path contact %>">
+                <%=h contact.main_name %>
+              </li>
+            <% end %>
+        </ul>
+    </div>
+
+    <div id="contact_detail">
+        <div class="editarea">
+            <h2>
+                <div class="photo">
+                    <img src="/images/person.gif" align="top" />
+                </div>
+                <div class="contact_name">
+                    Loading...
+                </div>
+            </h2>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <th>Loading...</th>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%= link_to image_tag('add.png', :size => '29x22'), new_contact_path, :id => "new-link"  %>
+    <span id="delete-link">
+        
+    </span>
+    <span id="edit-link">
+        
+    </span>
+    <br class="clearfloat" />
+</div>
+

@@ -1,0 +1,61 @@
+
+<h2>
+    <div class="photo">
+        <img src="/images/person.gif" alt="" align="top" />
+    </div>
+    <div class="contact_name">
+        <%=h @contact.main_name %><br />
+        <small><%=h @contact.second_name %></small>
+    </div>
+</h2>
+    <table border="0" cellspacing="0" cellpadding="0">
+        <% %w{phones emails websites chats}.each do |cat| %>
+            <% for cl in @contact.send(cat) %>
+            <tr>
+                <th><%= cl.show_label %></th>
+                <% if cl.label.include?('email') %>
+                    <td><a class="email-link" href="mailto:<%=h @contact.main_name %><<%=h cl.value %>>"><%=h cl.value %></a></td>
+                <% elsif cl.label.include?('website') %>
+                    <td><a class="email-link" href="<%=h cl.value %>"><%=h cl.value %></a></td>
+                <% else %>
+                    <td><%=h cl.value %></td>
+                <% end %>
+            </tr>
+            <% end %>
+        <% end %>
+            <tr>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>
+                    <a class="map-link" target="_blank" href="http://maps.google.com/maps?q=<%= @contact.map_address %>">
+                        <%= (cl = @contact.address_line(:address_street)) ? cl.value : nil %><br />
+                        <%= (cl = @contact.address_line(:address_city)) ? cl.value : nil %>
+                        <%= (cl = @contact.address_line(:address_state)) ? cl.value : nil %>
+                        <%= (cl = @contact.address_line(:address_postal_code)) ? cl.value : nil %><br />
+                        <%= (cl = @contact.address_line(:address_country)) ? cl.value : nil %>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>
+                  <%= @contact.notes %>
+                </td>
+            </tr>
+    </table>
+    
+<script type="text/javascript" charset="utf-8">
+    stoken = '<%= form_authenticity_token %>'
+    $('#delete-link').html('<%=escape_javascript link_to image_tag("delete.png", :size => "29x22"), contact_path(@contact), :onclick => "remove_contact_line(this,stoken); return false" %>');
+    $('#edit-link').html('<%=escape_javascript link_to image_tag("edit.png", :size => "52x22"), edit_contact_path(@contact) %>');
+    $('#edit-link a').click(function() {
+        $('#contact_detail .editarea').load(this.href);
+    	return false;
+    });
+    $('#contact_list ul li').removeClass("selected");
+    $('#contact_<%= @contact.id %>_name').html('<%= @contact.main_name %>').addClass('selected');
+</script>
+
+<%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
