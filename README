@@ -1,3 +1,14 @@
-== Welcome to Nona
+== Welcome to AddressBook App
 
-TODO: add application docs
+This application was created in 2007, when many things was different.
+It converted to match with latest rails in all the config files but views and controllers are still having old style.
+
+In future this can be Slice / Engine App. I will attempt to convert after Rails 3.0 or based on needs.
+
+Future planning:
+
+* CouchDB ?
+* Performance optimizations
+* Full text search
+* Pluggability 
+
