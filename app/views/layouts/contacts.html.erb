@@ -11,7 +11,7 @@
     
     <div id="header">
         <h1>Address Book</h1>
-        <% form_tag(search_contacts_path, :id => "search") do %>
+        <%#form_tag(search_contacts_path, :id => "search") do %>
             <div id="flash">
                 
             </div>
@@ -21,7 +21,7 @@
                     <td><input type="image" src="/images/search.png" /><%= (link_to image_tag('close.png'), contacts_path) if params[:q] %></td>
                 </tr>
             </table>
-        <% end %>
+        <%# end %>
         <br class="clearfloat" />
     </div>
 

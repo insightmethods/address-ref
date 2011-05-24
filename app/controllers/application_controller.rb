@@ -4,7 +4,10 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   before_filter :varify_access
-  
+  before_filter :authenticate_user!
+
+
+
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'c7bcecbc50d9d3e1b8be26cce22aa709'

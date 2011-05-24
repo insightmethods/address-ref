@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.find(:all, :order => "company_name, first_name")
+    @contacts = Contact.all(:order => "company_name, first_name")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @contacts.to_xml(:dasherize => false, :methods => [:main_name], :only => [:name, :id] ) }

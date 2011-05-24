@@ -6,16 +6,16 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>ContactLines: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'scaffold' %>
-
+  <%= stylesheet_link_tag 'common' %>
   <%= javascript_include_tag 'jquery-1.2.1.js' %>
   <%= javascript_include_tag 'jquery.corner.js' %>
   <%= javascript_include_tag 'application' %>
 </head>
 <body  class="twocolumn">
-
+<% if current_user %>
     <div id="header">
         <h1>Address Book</h1>
-        <%#form_tag(search_contacts_path, :id => "search") do %>
+        <%  form_tag(contacts_path, :id => "search") do %>
             <div id="flash">
 
             </div>
@@ -25,10 +25,10 @@
                     <td><input type="image" src="/images/search.png" /><%= (link_to image_tag('close.png'), contacts_path) if params[:q] %></td>
                 </tr>
             </table>
-        <%# end %>
+        <% end %>
         <br class="clearfloat" />
     </div>
-
+<%end%>
 <%= yield  %>
-
+</body>
 </html>
